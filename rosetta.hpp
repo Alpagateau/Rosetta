@@ -107,7 +107,7 @@ bool createTempFile(std::string path, lgn language)
       if(inBlock)
       {
         currentBlock += line + "\n";
-        std::cout << "New Line : " << line << std::endl;
+        //std::cout << "New Line : " << line << std::endl;
         if(line.substr(0, language.cmt.size()) == language.cmt)
         {
           std::string comment = trim_copy(line.substr(language.cmt.size()));
