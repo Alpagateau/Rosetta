@@ -37,3 +37,11 @@ void countToTen()
 //rignore 
 //hello world
 ```
+This is now all about python 
+```python
+print("Hello world")
+def countToTen():
+    for i in range(10):
+        print(i+1)
+
+```

@@ -2,7 +2,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <string>
-#include <map>
 #include <fstream>
 #include <iostream>
 #include <algorithm> 
@@ -46,12 +45,6 @@ inline std::string rtrim_copy(std::string s) {
 inline std::string trim_copy(std::string s) {
     trim(s);
     return s;
-}
-
-bool findFile(std::string path)
-{
-  struct stat buffer;   
-  return (stat (path.c_str(), &buffer) == 0); 
 }
 
 bool isBlock(std::string l)
@@ -105,7 +98,7 @@ bool createTempFile(std::string path, lgn language)
         currentidx = -1;
       }else 
       {
-        if(getLanguage(line) == language.id)
+        if(getLanguage(line) == language.fullname)
         {
             inBlock = true;
         }
@@ -114,6 +107,7 @@ bool createTempFile(std::string path, lgn language)
       if(inBlock)
       {
         currentBlock += line + "\n";
+        std::cout << "New Line : " << line << std::endl;
         if(line.substr(0, language.cmt.size()) == language.cmt)
         {
           std::string comment = trim_copy(line.substr(language.cmt.size()));

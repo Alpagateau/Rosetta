@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include "rosetta.hpp"
+#include <sys/wait.h>
 #include "languagelist.hpp" 
-#include "childproc.hpp"
+//#include "childproc.hpp"
 #define VERSION "0.0.1.0"
 
 int main(int argc, char *argv[])
@@ -27,16 +28,17 @@ int main(int argc, char *argv[])
             << " rosetta mardownfile language\n" 
             << "Others flags\n"
             << "> -h : Shows help\n"
-            << "> -v : Shows version\n"
-            << "> -V : verbose"
+            << "> -V : Shows version\n"
+            << "> -v : verbose\n"
             << "> -km : keep middle files\n"
+            << "\nYou can set up the compilers in ~/.config/rosetta/config.txt. If no such file is found, it will fall back on a few default setting, including cpp, python and ipython\n"
             << std::endl;
         }
-        if(arg == "-v")
+        if(arg == "-V")
         {
           std::cout << "ROSETTA version : " << VERSION << std::endl;
         }
-        if(arg == "-V")
+        if(arg == "-v")
         {
           verbose = true;
         }
